@@ -1,0 +1,24 @@
+category,label,color
+condition,CTRL,#4DBBD5
+condition,CB,#E64B35
+celltype,FibroStromal,#8DD3C7
+celltype,LesionStromal,#BEBADA
+celltype,T/NK,#CCEBC5
+celltype,Pericytes,#7393B3
+celltype,LEPR+ MSC-like,#FB8072
+celltype,Endothelial,#43AA8B
+celltype,VSMC,#80B1D3
+celltype,Neutrophils,#B3DE69
+celltype,ChondroFibroStromal,#FCCDE5
+celltype,Mature OB,#FDB462
+celltype,Act OB-Stromal,#BC80BD
+celltype,CNCC-OCPs,#FFED6F
+celltype,Resident Mac,#A6CEE3
+celltype,OC,#1F78B4
+celltype,Inflam Mono,#B2DF8A
+celltype,TREM2+ Mac,#33A02C
+celltype,Schwann,#FB9A99
+celltype,B cells,#E31A1C
+celltype,Mast cells,#CAB2D6
+celltype,Plasma cells,#F781BF
+celltype,pDC,#6A3D9A

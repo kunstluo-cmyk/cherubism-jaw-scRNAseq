@@ -1,0 +1,7 @@
+Core conclusion: A DecontX-corrected, composition-matched analysis supports a descriptive shift in inter-lineage communication in CB and prioritizes lesion-stromal ligands whose predicted targets align with TREM2+ macrophage/osteoclast programs.
+Figure archetype: asymmetric mixed-modality quantitative figure
+Target: high-impact biomedical journal; double-column
+Backend: R only
+Main outputs: independent panels A-H; SVG/PDF/600-dpi TIFF/PNG; source CSV; scripts; sessionInfo
+Statistics: within-specimen CellChat permutation/FDR and cell-resampling stability only; no donor-level inference
+Reviewer risks: unmatched fine cell states, single donor per condition, cell-abundance confounding, ambient RNA, circular validation, causal wording

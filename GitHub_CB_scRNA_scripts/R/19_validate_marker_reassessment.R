@@ -1,0 +1,17 @@
+root <- Sys.getenv("CB_REVISION_ROOT")
+if (!nzchar(root)) root <- normalizePath(getwd(), winslash = "/", mustWork = TRUE)
+project_lib <- file.path(root,"renv","library","R-4.4","x86_64-w64-mingw32")
+.libPaths(unique(c(project_lib,.Library,.Library.site)))
+fig_dir <- file.path(root,"figures","marker_reassessment")
+res_dir <- file.path(root,"results","annotation")
+bases <- c("Bubbleplot_original_marker_panel_recomputed","Bubbleplot_lesion_vs_ecm_remodeling_absolute","Effectplot_lesion_vs_ecm_remodeling_balanced_bootstrap")
+exts <- c("svg","pdf","tiff","png")
+out <- do.call(rbind,lapply(bases,function(b){
+  p <- file.path(fig_dir,paste0(b,".",exts)); ok <- file.exists(p); bytes <- ifelse(ok,file.info(p)$size,NA_real_)
+  png_path <- file.path(fig_dir,paste0(b,".png")); wh <- c(NA_integer_,NA_integer_)
+  if (file.exists(png_path) && requireNamespace("png",quietly=TRUE)) { d <- dim(png::readPNG(png_path,native=TRUE)); wh <- c(d[2],d[1]) }
+  data.frame(figure=b,all_four_formats=all(ok),minimum_file_bytes=min(bytes,na.rm=TRUE),png_width_px=wh[1],png_height_px=wh[2],pass=all(ok)&&all(bytes>1000,na.rm=TRUE)&&all(wh>=c(650,450)),stringsAsFactors=FALSE)
+}))
+readr::write_csv(out,file.path(res_dir,"marker_reassessment_figure_validation.csv"))
+if (!all(out$pass)) stop("Marker reassessment validation failed")
+message("Marker reassessment validation passed: ",nrow(out)," figures / ",nrow(out)*4," files")

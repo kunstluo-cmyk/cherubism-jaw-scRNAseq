@@ -1,0 +1,34 @@
+project: CB_scRNA_reproducible_analysis
+seed: 20260910
+input_rdata: data/Several original1.Rdata
+legacy_annotation_rdata: data/Sce_all final with anno.Rdata
+qc:
+  min_counts: 500
+  min_features: 250
+  upper_quantile: 0.995
+  upper_mad_multiplier: 5
+  mitochondrial_mad_multiplier: 5
+  mitochondrial_floor_percent: 10
+  mitochondrial_cap_percent: 20
+doublets:
+  method: scDblFinder
+  expected_rate: automatic
+  multi_sample_mode: split
+ambient_rna:
+  method: DecontX
+  background: unavailable_filtered_cell_mode
+  max_iterations: 500
+  variable_genes: 5000
+  high_contamination_flag: 0.25
+normalization:
+  method: LogNormalize
+  scale_factor: 10000
+  variable_features: 2000
+dimension_reduction:
+  npcs: 50
+  dimensions: 30
+  clustering_resolution: 0.5
+integration:
+  method: RPCA
+  use: visualization_and_annotation_sensitivity_only
+  differential_expression: prohibited
